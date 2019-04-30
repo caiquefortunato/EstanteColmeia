@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <!-- Image and text -->
+    <nav class="navbar navbar-light bg-light">
+
+      <a class="navbar-brand" href="#">
+          <img src="https://images.all-free-download.com/images/graphiclarge/book_icon_vector_green_background_280799.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+          <%= title %>
+      </a>
+      <a href="/new"><button type="button" class="btn btn-dark">Cadastrar novo livro</button></a>
+    </nav>
+    <br>
+
+    <div class="container">
+        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+        <br>
+    </div>
+    
+    <div class="container" style="overflow-Y: scroll; max-height:470px">
+      <table class="table table-hover">
+        <thead class="thead-dark" id="myTable">
+          <tr>
+            <th scope="col" style="text-align:center;">Título</th>
+            <th scope="col" style="text-align:center;">Autor(a)</th>
+            <th scope="col" style="text-align:center;">Editora</th>
+            <th scope="col" style="text-align:center;">Local</th>
+            <th scope="col" style="text-align:center;"></th>
+          </tr>
+        </thead>
+        <tbody id="myTable">
+        <% docs.forEach(function(books){ %>
+          <tr>
+            <td><center><%= books.titulo %></center></a></td>
+            <td><center><%= books.autor %></center></a></td>
+            <td><center><%= books.editora %></center></a></td>
+            <td><center><%= books.local %></center></a></td>
+
+            <td>
+              <center>
+                  <a href="/book/<%= books._id %>" >
+                    <button type="button" class="btn btn-primary">Ver</button>
+                  </a>
+              </center>
+            </td>       
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div>
+    <br>
+  <footer class="footer mt-auto py-3">
+      <div class="container">
+        <span class="text-muted">Desenvolvido por Caíque Fortunato.</span>
+      </div>
+  </footer>
+  </div>
+
+  <script>
+      $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+  </script>
+
+  </body>
+</html>
