@@ -4,70 +4,99 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
+
   <body>
     <!-- NAVBAR -->
     <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="#">
-          <img src="https://images.all-free-download.com/images/graphiclarge/book_icon_vector_green_background_280799.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-          <!--<%= title %>-->
-      </a>
-      <a href="/new"><button type="button" class="btn btn-dark">Cadastrar novo livro</button></a>
-    </nav>
+            <table>
+              <tr>
+                <td>
+                    <a class="navbar-brand" href="#">
+                        <img src="https://images.all-free-download.com/images/graphiclarge/book_icon_vector_green_background_280799.jpg" 
+                          width="30" height="30" class="d-inline-block align-top" alt="">
+                        <%= title %>
+                      </a>
+                </td>
+                <td>
+                    <a class="navbar-brand" href="/"><button class="btn btn-outline-success" type="button">Minha estante</button></a>
+                </td>
+                <td>
+                    <a class="navbar-brand" href="/new"><button class="btn btn-outline-success" type="button">Cadastrar novo livro</button></a>
+                </td>
+              </tr>
+            </table>
+          </nav>
     <br>
     <!-- BODY -->
     <div class="container">
         <form action="<%= action %>" method="POST">
-            <div class="row">
-                <div class="col-sm border border-secondary rounded">
-                    <%= doc.titulo %>
-                </div>
-                
-                <div class="col-9 border border-secondary rounded">
-                    <table class="table table-borderless">
-                        <thead>
-                            <tr>
-                            <th scope="col"></th>
-                            <th scope="col" style="width: 80%">Informações sobre a obra</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Título</th>
-                                <td><%= doc.titulo %></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Série/Colecao</th>
-                                <td><%= doc.serie %></td>
-                            </tr>     
-                            <tr>
-                                <th scope="row">Autor(a)</th>
-                                <td><%= doc.autor %></td>
-                            </tr> 
-                            <tr>
-                                <th scope="row">Editora</th>
-                                <td><%= doc.editora %></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Páginas</th>
-                                <td><%= doc.paginas %></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Lançamento</th>
-                                <td><%= doc.ano %></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Gênero</th>
-                                <td><%= doc.genero %></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Local na estante</th>
-                                <td><%= doc.local %></td>
-                            </tr>
-                        </tbody>
-                        </table>
-                </div>
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <td>
+                        <img src="/upload/<%= doc._id %>.jpg" 
+                            alt="<%= doc._id %>" height="400px" width="250px">
+                            <!-- Form para upload de imagem -->
+                        
+                    </br></br>
+                    <!--
+                        <form action="/imagem/<%= doc._id %>" method="post" enctype="multipart/form-data">
+                            <input type="file" name="filetoupload"><br>
+                            <input type="submit">
+                        </form>
+                     -->   
+                    </td>
+                    <!-- Informacoes -->
+                    <td style="width: 80%"> 
+                        <table class="table table-borderless border border-dark rounded
+                        bg-light text-dark">
+                                <thead>
+                                    <tr>
+                                    <th scope="col" ></th>
+                                    <th scope="col" style="width: 70%">Informações sobre a obra</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Título - Autor(a)</th>
+                                        <td><%= doc.titulo %> - <%= doc.autor %></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Série/Colecao</th>
+                                        <td><%= doc.serie %></td>
+                                    </tr>     
+                                    
+                                    <tr>
+                                        <th scope="row">Editora</th>
+                                        <td><%= doc.editora %></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Páginas</th>
+                                        <td><%= doc.paginas %></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Lançamento</th>
+                                        <td><%= doc.ano %></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Gênero</th>
+                                        <td><%= doc.genero %></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">ISBN</th>
+                                        <td><%= doc.isbn %></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Local na estante</th>
+                                        <td><%= doc.local %></td>
+                                    </tr>
+                            </tbody>
+                    </table>
+                    </td>
+                </tr>
+            </table>
             </div>
-            <br>
+            
             <div class="row">
                 <div class="col-sm">
                     <a href="/">
@@ -86,6 +115,9 @@
                 </div>  
             </div>
         </form>
+
+        
+
     </div>
     <br><br>
     <!-- FOOTER -->

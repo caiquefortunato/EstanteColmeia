@@ -9,13 +9,26 @@
   <body>
     <!-- Image and text -->
     <nav class="navbar navbar-light bg-light">
+        <table>
+          <tr>
+            <td>
+                <a class="navbar-brand" href="#">
+                    <img src="https://images.all-free-download.com/images/graphiclarge/book_icon_vector_green_background_280799.jpg" 
+                      width="30" height="30" class="d-inline-block align-top" alt="">
+                    Estante Colmeia de Livros
+                  </a>
+            </td>
 
-      <a class="navbar-brand" href="#">
-          <img src="https://images.all-free-download.com/images/graphiclarge/book_icon_vector_green_background_280799.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-          <%= title %>
-      </a>
-      <a href="/new"><button type="button" class="btn btn-dark">Cadastrar novo livro</button></a>
-    </nav>
+            <td>
+                <a class="navbar-brand" href="/new"><button class="btn btn-outline-success" type="button">Cadastrar novo livro</button></a>
+            </td>
+
+            <td>
+                <a class="navbar-brand" href="/about"><button class="btn btn-outline-success" type="button">Sobre</button></a>
+            </td>
+          </tr>
+        </table>
+      </nav>
     <br>
 
     <div class="container">
